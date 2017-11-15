@@ -1,0 +1,170 @@
+﻿<!-- x:Class="WpfApplication1.Controls.STLViewer" ????-->
+
+<UserControl x:Class="WpfApplication1.Controls.STLViewer.STLPlayer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             
+             
+             xmlns:helix="clr-namespace:HelixToolkit.Wpf;assembly=HelixToolkit.Wpf"             
+             xmlns:STLPlayer="clr-namespace:WpfApplication1.Controls.STLViewer"
+  
+             
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="200">
+
+    <UserControl.Resources>
+        
+            <helix:LinearConverter x:Key="Multiplier" M="0.5"/>
+        
+
+
+        <!--   <HierarchicalDataTemplate DataType = "{x:Type media3d:ModelVisual3D}" ItemsSource = "{Binding Children}">
+            <StackPanel Orientation="Horizontal">
+                <Rectangle Width="8" Height="8" Fill="Red" Stroke="Black"/>
+                <TextBlock Text="{Binding}"/>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+        <HierarchicalDataTemplate DataType = "{x:Type media3d:Model3DGroup}" ItemsSource = "{Binding Children}">
+            <StackPanel Orientation="Horizontal">
+                <Rectangle Width="8" Height="8" Fill="Yellow" Stroke="Black"/>
+                <TextBlock Text="{Binding}"/>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+           <HierarchicalDataTemplate DataType = "{x:Type media3d:Model3DGroup}" ItemsSource = "{Binding Path=Children}">
+                <StackPanel Orientation="Horizontal">
+                <Rectangle Width="8" Height="8" Fill="Yellow" Stroke="Black"/>
+                <TextBlock Text="{Binding}"/>
+            <ItemsControl ItemsSource="{Binding Path=Children}">           
+            </ItemsControl>
+            </StackPanel>
+
+        </HierarchicalDataTemplate>-->
+
+        <!--SYHE comment 
+        <HierarchicalDataTemplate DataType = "{x:Type STLPlayer:MainViewModel}" ItemsSource = "{Binding Children}">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse Width="8" Height="8" Margin="4" Fill="{Binding Brush}" Stroke="Black"/>
+                    <TextBlock Text="{Binding TypeName}" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding Name}" Padding="8 0 0 0"/>
+                </StackPanel>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+        -->
+        
+        
+        <!--<HierarchicalDataTemplate DataType = "{x:Type media3d:ModelVisual3D}" ItemsSource = "{Binding Children}">
+            <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Ellipse Width="8" Height="8" Margin="4" Fill="Blue" Stroke="Black"/>
+                <TextBlock Text="{Binding}"/>
+                <TextBlock Text="{Binding Visual3DModel}"/>
+            </StackPanel>
+                <ContentControl Content="{Binding Content}"/>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+        <HierarchicalDataTemplate DataType = "{x:Type media3d:Model3DGroup}" ItemsSource="{Binding Children}">
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse Width="8" Height="8" Margin="4" Fill="Green" Stroke="Black"/>
+                    <TextBlock Text="{Binding}"/>
+                </StackPanel>
+        </HierarchicalDataTemplate>
+        <DataTemplate DataType = "{x:Type media3d:GeometryModel3D}">
+            <StackPanel Orientation="Horizontal">
+                <Ellipse Width="8" Height="8" Margin="4" Fill="Red" Stroke="Black"/>
+                <TextBlock Text="{Binding}"/>
+            </StackPanel>
+        </DataTemplate>-->
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{Binding ElementName=Menu1, Path=Height}"  />
+            <RowDefinition Height="400"/>
+        </Grid.RowDefinitions>
+
+
+
+        <Menu x:Name="Menu1" Grid.Row="0" >
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Open..." Command="{Binding FileOpenCommand}"/>
+                    <MenuItem Header="_Export..." Command="{Binding FileExportCommand}"/>
+                    <Separator/>
+                    <MenuItem Header="E_xit" Command="{Binding FileExitCommand}"/>
+                </MenuItem>
+                <MenuItem Header="_Edit">
+                    <MenuItem Header="_Copy XAML" Command="{Binding EditCopyXamlCommand}"/>
+                </MenuItem>
+                <MenuItem Header="_View">
+                    <MenuItem Header="_Zoom extents" Command="{Binding ViewZoomExtentsCommand}"/>
+                </MenuItem>
+                <MenuItem Header="_Help">
+                    <MenuItem Header="_About" Command="{Binding HelpAboutCommand}"/>
+                </MenuItem>
+            </Menu>
+
+
+
+
+        <helix:HelixViewport3D Grid.Row="1"   x:Name="view1" CameraRotationMode="Trackball" ModelUpDirection="0,1,0" ShowCoordinateSystem="True" 
+                               MouseDown="OnViewportMouseDown" CalculateCursorPosition="True"
+                               Title="" TitleSize="12"
+                               >
+
+                    <ModelVisual3D x:Name="root1"  Content="{Binding CurrentModel}">
+                <helix:GridLinesVisual3D_PW x:Name="GridLines" Center="0,0,0" Width="320" Length="400" MinorDistance="10" MajorDistanceX="40" MajorDistanceY="80" Thickness="0.5" Fill="Green"/>
+
+                <!-- <helix:CombinedManipulator CanRotateX="False" CanRotateY="False" CanRotateZ="False" TargetTransform="{Binding Transform, ElementName=CurrentModel}"/> -->
+
+                        <!-- <helix:CombinedManipulator  x:Name="UITranslate" TargetTransform="{Binding Transform, ElementName=root1}"/> -->
+
+                        <!--<helix:CubeVisual3D Fill="Red"/> 
+                <helix:GridLinesVisual3D/>-->
+                    <helix:DefaultLights/>
+
+                <!-- <ModelVisual3D Content="{Binding CurrentModel}"/> -->
+                    <!--
+                    <helix:FileModelVisual3D Source="{Binding CurrentModelPath, Mode=TwoWay}" ModelLoaded="ModelLoaded"/> -->
+                    <!--
+                    <helix:Expander3D Expansion="{Binding Expansion}" Content="{Binding CurrentModel}"/>-->
+                    <!-- <helix:HelixViewport3D.Triggers>
+                <EventTrigger 
+            </helix:HelixViewport3D.Triggers>-->
+                </ModelVisual3D>
+            </helix:HelixViewport3D>
+
+        <Grid Grid.Row="1" x:Name="CursorPositionBlock" HorizontalAlignment="Right" VerticalAlignment="Top" Background="White" Margin="0,0,15,0"  Opacity="1" IsHitTestVisible="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition MinWidth="50"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="x" Margin="5,0,4,0"/>
+            <TextBox x:Name="CX" Grid.Row="0" Grid.Column="1" BorderThickness="0" TextAlignment="Right" Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
+                         Text="{Binding Path=CursorPosition.X, ElementName=view1, StringFormat={}{0:f1}, FallbackValue=0.0}" />
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="y" Margin="5,0,4,0" />
+            <TextBox x:Name="CY" Grid.Row="1" Grid.Column="1" BorderThickness="0" TextAlignment="Right" Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
+                         Text="{Binding Path=CursorPosition.Y, ElementName=view1, StringFormat={}{0:f1}, FallbackValue=0.0}" />
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="z" Margin="5,0,4,0" />
+            <TextBox x:Name="CZ" Grid.Row="2" Grid.Column="1" BorderThickness="0" TextAlignment="Right" Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
+                         Text="{Binding Path=CursorPosition.Z, ElementName=view1, StringFormat={}{0:f1}, FallbackValue=0.0}" />
+            <TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" Text="Cursor" Background="Beige"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" Text="Position" Background="Beige"/>
+        </Grid>
+
+
+
+    </Grid>
+</UserControl>
