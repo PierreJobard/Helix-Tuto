@@ -1,3 +1,5 @@
 Sample/bin/
+Sample/bin/Debug/
+Sample/bin/Release/
 Sample/.vs/
 Sample/obj/
