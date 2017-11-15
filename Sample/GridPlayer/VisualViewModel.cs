@@ -4,7 +4,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace WpfApplication1.Controls.GridViewer
+namespace SampleSample.GridPlayer
 {
     using System.Collections.Generic;
     using System.Windows;

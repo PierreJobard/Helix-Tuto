@@ -1,6 +1,6 @@
-﻿<!-- x:Class="WpfApplication1.Controls.STLViewer" ????-->
+﻿<!-- x:Class="Sample.STLViewer" ????-->
 
-<UserControl x:Class="WpfApplication1.Controls.GridViewer.GridPlayer"
+<UserControl x:Class="SampleSample.GridPlayer.GridPlayer"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,7 +8,7 @@
              
              
              xmlns:helix="clr-namespace:HelixToolkit.Wpf;assembly=HelixToolkit.Wpf"             
-             xmlns:STLGridPlayer="clr-namespace:WpfApplication1.Controls.GridViewer"
+             xmlns:STLGridPlayer="clr-namespace:SampleSample.GridPlayer"
   
              
              mc:Ignorable="d" 
@@ -64,19 +64,15 @@
 
         <helix:HelixViewport3D Grid.Row="1"   x:Name="view1" CameraRotationMode="Trackball" ModelUpDirection="0,1,0" 
                                CameraMode="Inspect" 
-                               ShowCoordinateSystem="True"  CalculateCursorPosition="True" ShowTriangleCountInfo="true" 
-                               MouseDown="OnViewportMouseDown"
-                                                          
-                                
-                               
-                               >
+                               ShowCoordinateSystem="True"  CalculateCursorPosition="True" ShowTriangleCountInfo="False" 
+                               MouseDown="OnViewportMouseDown">
 
-                    <ModelVisual3D x:Name="root1"  Content="{Binding CurrentModel}" >
+            <ModelVisual3D x:Name="root1"  Content="{Binding CurrentModel}" >
 
                <!-- <helix:CombinedManipulator x:Name ="UITranslator"  CanRotateX="true" CanRotateY="true" CanRotateZ="true" 
                                            TargetTransform="{Binding Transform, ElementName=CurrentModel}"/> -->
 
-                <helix:GridLinesVisual3D_PW x:Name="GridLines" Center="0,0,0" Width="320" Length="400" MinorDistance="10" MajorDistanceX="40" MajorDistanceY="80" Thickness="0.5" Fill="Green"/>
+                <!--<helix:GridLinesVisual3D_PW x:Name="GridLines" Center="0,0,0" Width="320" Length="400" MinorDistance="10" MajorDistanceX="40" MajorDistanceY="80" Thickness="0.5" Fill="Green"/>-->
 
 
 

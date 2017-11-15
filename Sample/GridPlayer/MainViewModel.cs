@@ -4,7 +4,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace WpfApplication1.Controls.GridViewer
+namespace SampleSample.GridPlayer
 {
     using System;
     using System.Collections.Generic;
@@ -194,9 +194,13 @@ namespace WpfApplication1.Controls.GridViewer
             //this.CurrentModel = await this.LoadAsync(this.CurrentModelPath, false);
             if (this.CurrentModel == null)
             {
+                /*
                 Model3DGroup mFile;
                 mFile = await this.LoadAsync(this.CurrentModelPath, false);
                 this.CurrentModel = mFile;
+                */
+                var mi = new ModelImporter();
+                this.CurrentModel = mi.Load(this.CurrentModelPath, this.dispatcher);
             }
             else
             {

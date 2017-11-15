@@ -19,7 +19,7 @@ using System.Windows.Media.Media3D;
 using HelixToolkit.Wpf;
 
 
-namespace WpfApplication1.Controls.GridViewer
+namespace SampleSample.GridPlayer
 {
     /// <summary>
     /// Interaction logic for STLPlayerControl.xaml

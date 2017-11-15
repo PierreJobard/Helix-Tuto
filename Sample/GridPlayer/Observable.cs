@@ -6,7 +6,7 @@
 
 using System.ComponentModel;
 
-namespace WpfApplication1.Controls.GridViewer
+namespace SampleSample.GridPlayer
 {
     public class Observable : INotifyPropertyChanged
     {
